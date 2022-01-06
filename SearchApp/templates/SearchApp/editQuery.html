@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+	<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock css %}
+
+{% block content %} 
+
+	{% include 'sidebar.html' %}
+	<div class="pageArea">
+		<div class="pageHeader">
+			<h1 class="pageHeaderLogo">Update Query</h1>
+			
+		</div>
+		<div class="pageBody">
+			<div class="queryArea">
+				<h3>Write your query</h3>
+				<form action="{% url 'update' %}" method="POST">
+					{% csrf_token %}
+					<textarea name="query" class="form-control queryBox" placeholder="Select...">{{searchQuery}}</textarea>
+					<input type="hidden" value="{{searchQueryID}}" name="queryID">
+					<button class="btn btn-success" style="margin-top: 20px;">Update</button> 
+				</form>
+			</div>
+
+			<div class="reviewArea">
+				<h3 style="color: white;">Reviews</h3>
+				<hr>
+				{% for r in reviews %}
+					<div class="reviewDiv">
+						<!-- <div class="reviewId">
+							<h6>{{r.id}}</h6>
+						</div> -->
+						<div class="reviewContent">
+							<p>{{r.review}}</p>
+						</div>
+					</div>
+					<hr>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

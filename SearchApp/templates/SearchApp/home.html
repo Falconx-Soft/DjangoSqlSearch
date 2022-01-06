@@ -1,0 +1,115 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+	<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock css %}
+
+{% block content %} 
+
+	{% include 'sidebar.html' %}
+	<div class="pageArea">
+		<div class="pageHeader">
+			<h1 class="pageHeaderLogo">Search Query</h1>
+			<div class="pageHeaderButtons">
+				<div class="dropdown">
+					<button class="dropbtn" id="pillarBtn">Pillar <i class="feather icon-chevron-down"></i></button>
+					<div class="dropdown-content">
+					  <a id="pillarOption" style="cursor:pointer;">pillar1</a>
+					  <a id="pillarOption" style="cursor:pointer;">pillar2</a>
+					  <a id="pillarOption" style="cursor:pointer;">pillar3</a>
+					</div>
+				</div>
+
+				<div class="dropdown">
+					<button class="dropbtn" id="sourceTypeBtn">Source type <i class="feather icon-chevron-down"></i></button>
+					<div class="dropdown-content">
+						<a id="sourceTypeOption" style="cursor:pointer;">sourcetype1</a>
+						<a id="sourceTypeOption" style="cursor:pointer;">sourcetype2</a>
+						<a id="sourceTypeOption" style="cursor:pointer;">sourcetype3</a>
+					</div>
+				</div>
+
+				<div class="dropdown">
+					<button class="dropbtn" id="marketBtn">Market <i class="feather icon-chevron-down"></i></button>
+					<div class="dropdown-content">
+						<a id="marketOption" style="cursor:pointer;">market1</a>
+						<a id="marketOption" style="cursor:pointer;">market2</a>
+						<a id="marketOption" style="cursor:pointer;">market3</a>
+					</div>
+				</div>
+
+				<div class="dropdown">
+					<button class="dropbtn" id="brandSourceBtn">Brand Source <i class="feather icon-chevron-down"></i></button>
+					<div class="dropdown-content">
+						<a id="brandSourceOption" style="cursor:pointer;">brandsource1</a>
+						<a id="brandSourceOption" style="cursor:pointer;">brandsource2</a>
+						<a id="brandSourceOption" style="cursor:pointer;">brandsource3</a>
+					</div>
+				</div>
+				<div class="dropdown">
+					<button class="dropbtn">Date Range <i class="feather icon-chevron-down"></i></button>
+					<div class="dropdown-content">
+						<div class="dateRangeSelectorDiv">
+							<label for="birthday">Start:</label>
+							<input id="startDate" type="date" id="birthday" name="birthday">
+						</div>
+						<hr>
+						<div class="dateRangeSelectorDiv">
+							<label for="birthday">End:</label>
+							<input id="endDate" type="date" id="birthday" name="birthday">
+						</div>
+					</div>
+				</div>
+				<button id="searchByFilterBtn" class="btn btn-success" style="cursor: pointer;">Search by filter </button>
+				<form action="{% url 'searchQuery' %}" method="POST">
+					{% csrf_token %}
+					<input  name="searchByFilterQuery" id="searchByFilterQuery" type="hidden">
+					<button style="display: none;" id="searchByFilterQuerySubmit">Search</button> 
+				</form>
+			</div>
+			
+		</div>
+		<div class="pageBody">
+			<div class="queryArea">
+				<h3>Write your query</h3>
+				<form action="{% url 'searchQuery' %}" method="POST">
+					{% csrf_token %}
+					<textarea name="query" class="form-control queryBox" placeholder="Select..."></textarea>
+					<button class="btn btn-success" style="margin-top: 20px;">Search</button> 
+				</form>
+				{% if searchQuery%}
+					<form action="{% url 'saveQuery' %}" method="POST" style="margin-top: 30px;">
+						{% csrf_token %}
+						<input name="saveQuery" type="hidden" value="{{searchQuery}}">
+						<input name="queryName" type="text" class="form-control" placeholder="Enter query name">
+						<button class="btn btn-success" style="margin-top: 20px;">Save Query</button>
+					</form>
+				{% endif %}
+			</div>
+
+			<div class="reviewArea">
+				<h3 style="color: white;">Reviews</h3>
+				<hr>
+				{% for r in reviews %}
+					<div class="reviewDiv">
+						<!-- <div class="reviewId">
+							<h6>{{r.id}}</h6>
+						</div> -->
+						<div class="reviewContent">
+							<p>{{r.review}}</p>
+						</div>
+					</div>
+					<hr>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block js %} 
+
+	<script src="{% static 'js/home.js' %}"></script>
+
+{% endblock js %}

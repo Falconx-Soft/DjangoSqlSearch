@@ -1,0 +1,126 @@
+.pageArea{
+	margin-left: 280px;
+	min-height : 500px;
+	background-color: #fff;
+}
+
+/* header */
+
+.pageHeader{
+	height: 100px;
+	width: 100%;
+	display: flex;
+	box-shadow: 10px 10px 9px #aaaaaa;
+}
+
+.pageHeaderLogo{
+	padding-top: 20px;
+	padding-left: 20px;
+	position: relative;
+}
+
+.pageHeaderButtons{
+	position: absolute;
+	margin-top: 20px;
+	right: 10px;
+    padding: 16px;
+}
+
+.dropbtn {
+	background-color:#3ebfea;
+	border-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+	color: white;
+	padding: 10px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+	position: relative;
+	display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+	display: block;
+  }
+
+  .dateRangeSelectorDiv{
+	  padding: 15px;
+  }
+
+/* end header */
+
+/* body */
+
+.pageBody{
+	height: 100%;
+	width: 100%;
+	display: flex;
+}
+
+	/* queryArea */
+
+.queryArea{
+	width: 50%;
+	padding:20px;
+}
+
+.queryBox{
+	width: 100%;
+	height: 250px;
+}
+
+	/* end queryArea */
+
+	/* reviewArea */
+
+.reviewArea{
+	margin-top:20px;
+	width: 50%;
+	padding:20px;
+	height: 500px;
+	overflow: scroll;
+	background-color: #3f4d67;
+	color: white;
+}
+
+.reviewDiv{
+	display: flex;
+	padding: 10px;
+}
+
+.reviewId{
+	padding: 10px;
+}
+
+	/* end reviewArea */
+
+/* end body */
